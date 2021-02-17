@@ -1,2 +1,2 @@
 # ectopus
-A from scratch full-stack app to monitor Cypress io e2e tests results
+A backend web service to store and serve Cypress io e2e tests reports.
