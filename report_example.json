@@ -1,7 +1,6 @@
 { 
-    "_id" : ObjectId("6027f31000a3837d00139f25"),
-    "name" : "folio_front",
-    "start_at" : ISODate("2021-02-14T20:03:54.883Z"),
+    "name" : "your_tested_app",
+    "start_at" : "2021-02-14T20:03:54.883Z",
     "duration" : 1931,
     "total_tests" : 3,
     "failed" : 1,
@@ -37,7 +36,7 @@
             "spec" : {
                 "name" : "base.spec.js",
                 "relative" : "cypress/integration/base.spec.js",
-                "absolute" : "/Users/gabrieldavidson/folio-project/folio_front/cypress/integration/base.spec.js",
+                "absolute" : "your_tested_app/cypress/integration/base.spec.js",
                 "spec_type" : "integration"
             },
             "stats" : {
@@ -69,7 +68,7 @@
             "spec" : { 
                 "name" : "home.spec.js",
                 "relative" : "cypress/integration/home.spec.js",
-                "absolute" : "/Users/gabrieldavidson/folio-project/folio_front/cypress/integration/home.spec.js",
+                "absolute" : "your_tested_app/cypress/integration/home.spec.js",
                 "spec_type" : "integration" 
             },
             "stats" : { 
