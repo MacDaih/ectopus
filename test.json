@@ -1,0 +1,87 @@
+{ 
+    "_id" : ObjectId("6027f31000a3837d00139f25"),
+    "name" : "folio_front",
+    "start_at" : ISODate("2021-02-14T20:03:54.883Z"),
+    "duration" : 1931,
+    "total_tests" : 3,
+    "failed" : 1,
+    "passed" : 2,
+    "runs" : [ 
+        { 
+            "tests" : [ 
+                { 
+                    "title" : [ "My First Test", "Does not do much!" ],
+                    "state" : "failed",
+                    "body" : "function () {\n    expect((0, _display.upperTitle)(\"test\")).to.equal(\"TEST\");\n    expect(1).to.equal(2);\n  }",
+                    "attempts" : [ 
+                        { 
+                            "state" : "failed",
+                            "duration" : 53,
+                            "started_at" : "2021-02-11T20:03:54.887Z"
+                        } 
+                    ] 
+                }, 
+                {
+                    "title" : [ "My First Test", "Second Test !" ],
+                    "state" : "passed",
+                    "body" : "function () {\n    expect(1).to.equal(1);\n  }",
+                    "attempts" : [
+                        { 
+                            "state" : "passed",
+                            "duration" : 129,
+                            "started_at" : "2021-02-11T20:03:54.999Z" 
+                        }
+                    ]
+                }
+            ],
+            "spec" : {
+                "name" : "base.spec.js",
+                "relative" : "cypress/integration/base.spec.js",
+                "absolute" : "/Users/gabrieldavidson/folio-project/folio_front/cypress/integration/base.spec.js",
+                "spec_type" : "integration"
+            },
+            "stats" : {
+                "suites" : 1,
+                "tests" : 2,
+                "passes" : 1,
+                "pending" : 0,
+                "failures" : 1,
+                "start" : "2021-02-11T20:03:54.886Z",
+                "end" : "2021-02-11T20:03:55.134Z",
+                "duration" : 248 
+            }
+        },
+        { 
+            "tests" : [
+                { 
+                    "title" : [ "LANDING PAGE", "Should Land" ],
+                    "state" : "passed",
+                    "body" : "function () {\n    cy.visit('http://localhost:3000');\n  }",
+                    "attempts" : [ 
+                        { 
+                            "state" : "passed",
+                            "duration" : 904,
+                            "started_at" : "2021-02-11T20:03:56.748Z" 
+                        } 
+                    ] 
+                }
+            ],
+            "spec" : { 
+                "name" : "home.spec.js",
+                "relative" : "cypress/integration/home.spec.js",
+                "absolute" : "/Users/gabrieldavidson/folio-project/folio_front/cypress/integration/home.spec.js",
+                "spec_type" : "integration" 
+            },
+            "stats" : { 
+                "suites" : 1,
+                "tests" : 1,
+                "passes" : 1,
+                "pending" : 0,
+                "failures" : 0,
+                "start" : "2021-02-11T20:03:55.971Z",
+                "end" : "2021-02-11T20:03:57.663Z",
+                "duration" : 1692 
+            }
+        }
+    ]
+}

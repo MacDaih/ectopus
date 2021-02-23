@@ -1,0 +1,17 @@
+[package]
+name = "ectopus"
+version = "0.1.0"
+authors = ["MacDaih <52426918+MacDaih@users.noreply.github.com>"]
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+warp = "0.3.0"
+serde = { version = "1", features = ["derive"] }
+serde_json = "*"
+mongodb = { version = "1.1.1", default-features = false, features = ["async-std-runtime"] }
+futures = "0.3.12"
+bson = "*"
+tokio = { version = "1", features = ["full"] }
+chrono = { version="0.4.19", features = ["serde"] }
