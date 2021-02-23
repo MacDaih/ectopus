@@ -47,7 +47,6 @@ pub async fn read(j: serde_json::Value) -> Result<impl Reply, Rejection> {
         passed: serde_json::from_value(pass.to_owned()).unwrap(),
         runs: run_results,
     };
-    println!("{:?}",report.start_at);
     let init = run_service().await.unwrap();
     let _flag = init.insert_report(&report).await.unwrap();
     Ok(StatusCode::OK)
