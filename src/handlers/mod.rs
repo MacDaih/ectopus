@@ -1,5 +1,4 @@
 use serde_json;
-
 use warp::{
     Reply,
     Rejection,
@@ -10,6 +9,7 @@ use mongodb::error::Error;
 use crate::db;
 use crate::db::service::{ReaderService};
 use crate::db::model::{Report, Run};
+mod utils;
 
 async fn run_service() -> Result<ReaderService, Error> {
     let service = db::db()
@@ -66,10 +66,16 @@ fn create_new_suite(s: &serde_json::Value) -> Run {
 
 pub async fn retrieve_reports() -> Result<impl Reply, Rejection>  {
     let init = run_service().await.unwrap();
-    let results = init.get_all().await.unwrap();
+    let results = init.get_all(None).await.unwrap();
     Ok(warp::reply::json(&results))
 }
 
+pub async fn filter_reports(s: serde_json::Value) -> Result<impl Reply, Rejection> {
+    let doc = utils::set_filter(s);
+    let init = run_service().await.unwrap();
+    let results = init.get_all(Some(doc)).await.unwrap();
+    Ok(warp::reply::json(&results))
+}
 pub async fn retrieve_metrics() -> Result<impl Reply, Rejection> {
     let init = run_service().await.unwrap();
     let results = init.get_metrics().await.unwrap();

@@ -1,4 +1,5 @@
 use mongodb::{
+    Cursor,
     error::Error,
     options::{FindOptions},
     results::InsertOneResult,
@@ -30,15 +31,20 @@ impl ReaderService {
     pub async fn insert_report(&self, r: &Report) -> Result<InsertOneResult, Error> {
         self.collection.insert_one(report_to_doc(r), None).await
     }
-    pub async fn get_all(&self) -> Result<Vec<Report>, Error> {
+    pub async fn get_all(&self, filters: Option<Document>) -> Result<Vec<Report>, Error> {
         let find_options = FindOptions::builder().sort(doc! { "_id": -1 }).build();
-        let mut cursor = self.collection.find(None, find_options).await.unwrap();
+        let mut cursor: Cursor;
+        match filters {
+            Some(f) => cursor = self.collection.find(f, find_options).await.unwrap(),
+            None => cursor = self.collection.find(None, find_options).await.unwrap(),
+        }
         let mut results: Vec<Report> = Vec::new();
         while let Some(doc) = cursor.next().await {    
             results.push(doc_to_report(&doc?).unwrap());
         };
         Ok(results)
     }
+
     pub async fn get_metrics(&self) -> Result<Metric, Error> {
         let group = doc! {
                 "$group": {
@@ -67,10 +73,11 @@ impl ReaderService {
             speed: speed,
         })
     }
+
     async fn get_figures(&self) -> Result<Vec<Figures>, Error> {
         let figure = doc! {
             "$group": {
-                "_id": "name",
+                "_id": "$name",
                 "total": { "$sum": "$total_tests" },
                 "highest": {
                     "$max": "$passed"
